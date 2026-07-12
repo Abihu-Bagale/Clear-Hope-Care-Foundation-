@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Hope Care Foundation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        
+        :root {
+            --primary: #0A4D68;
+            --secondary: #088395;
+            --accent: #05BFDB;
+            --light: #F5F9FC;
+            --dark: #1A1A2E;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navbar */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 77, 104, 0.85), rgba(8, 131, 149, 0.85)), url('https://picsum.photos/id/1018/2000/1200');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 3.8rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .values {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .value-tag {
+            background: var(--light);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        /* Programs Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .program-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        /* Impact Section */
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat {
+            padding: 30px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* Donation Section */
+        .donation {
+            background: var(--light);
+        }
+        
+        .donation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .donation-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .donation-option {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #eee;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .donation-option:hover {
+            border-color: var(--secondary);
+        }
+        
+        .donation-option.selected {
+            border-color: var(--primary);
+            background: #f8f9ff;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #ccc;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.6rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .about-grid, .donation-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">Clear Hope Care</a>
+            
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#donate">Donate</a></li>
+            </ul>
+            
+            <div class="nav-buttons">
+                <a href="#donate" class="btn btn-primary">Donate Now</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Inspiring Hope.<br>Creating Opportunities.</h1>
+                <p>Empowering women and strengthening communities through education, leadership, and sustainable development.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="#donate" class="btn btn-primary" style="font-size: 1.1rem; padding: 16px 36px;">Donate Now</a>
+                    <a href="#about" class="btn btn-outline" style="background: rgba(255,255,255,0.15); color: white; border-color: white; font-size: 1.1rem; padding: 16px 36px;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Who We Are</h2>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Clear Hope Care Foundation (CHCF) is a nonprofit organization committed to empowering women, strengthening communities, and promoting sustainable development through education, leadership, skills training, advocacy, and economic empowerment initiatives.</p>
+                    
+                    <p>We work to advance gender equality, social inclusion, and community transformation by providing capacity-building programmes, professional development opportunities, and support systems that help women and vulnerable groups realize their full potential.</p>
+                    
+                    <div class="values">
+                        <div class="value-tag">Empowerment</div>
+                        <div class="value-tag">Equality</div>
+                        <div class="value-tag">Collaboration</div>
+                        <div class="value-tag">Impact</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="margin-bottom: 20px;">Our Mission</h3>
+                    <p style="font-size: 1.15rem; color: #555;">To inspire hope, create opportunities, and build stronger, more inclusive communities for a sustainable future.</p>
+                    
+                    <div style="margin-top: 40px;">
+                        <p><strong>📍</strong> Community Development</p>
+                        <p><strong>📧</strong> info@clearhopecarefoundation.org</p>
+                        <p><strong>📞</strong> 08162356968</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="section" style="background: #f8f9ff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Programs</h2>
+            </div>
+            
+            <div class="programs-grid">
+                <div class="program-card">
+                    <h3>Women Leadership Academy</h3>
+                    <p>Comprehensive leadership training for women to take on decision-making roles in their communities and workplaces.</p>
+                </div>
+                
+                <div class="program-card">
+                    <h3>Skills &amp; Vocational Training</h3>
+                    <p>Hands-on training in digital literacy, entrepreneurship, and vocational skills to promote economic independence.</p>
+                </div>
+                
+                <div class="program-card">
+                    <h3>Community Advocacy &amp; Inclusion</h3>
+                    <p>Advocacy campaigns and awareness programs focused on gender equality, social inclusion, and human rights.</p>
+                </div>
+                
+                <div class="program-card">
+                    <h3>Economic Empowerment Initiative</h3>
+                    <p>Support for women-led businesses through micro-grants, mentorship, and access to markets and resources.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Impact</h2>
+            </div>
+            
+            <div class="impact-stats">
+                <div class="stat">
+                    <div class="stat-number">2,450+</div>
+                    <p>Women Empowered</p>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">38</div>
+                    <p>Communities Reached</p>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">120+</div>
+                    <p>Women in Leadership Roles</p>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">85</div>
+                    <p>Businesses Supported</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donate" class="section donation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Support Our Mission</h2>
+                <p style="max-width: 600px; margin: 0 auto; color: #555;">Your donation helps us empower more women and transform communities. Every contribution makes a difference.</p>
+            </div>
+            
+            <div class="donation-grid">
+                <!-- Donation Options -->
+                <div>
+                    <h3 style="margin-bottom: 25px;">Choose Your Impact</h3>
+                    
+                    <div class="donation-options">
+                        <div class="donation-option selected" onclick="selectAmount(this, 5000)">
+                            <strong>₦5,000</strong> — Support one woman's skills training
+                        </div>
+                        <div class="donation-option" onclick="selectAmount(this, 15000)">
+                            <strong>₦15,000</strong> — Sponsor leadership training for 3 women
+                        </div>
+                        <div class="donation-option" onclick="selectAmount(this, 30000)">
+                            <strong>₦30,000</strong> — Fund a community empowerment project
+                        </div>
+                        <div class="donation-option" onclick="selectAmount(this, 50000)">
+                            <strong>₦50,000</strong> — Support a full vocational training batch
+                        </div>
+                        
+                        <div style="margin-top: 15px;">
+                            <label style="font-weight: 600;">Custom Amount (₦)</label>
+                            <input type="number" id="customAmount" placeholder="Enter amount" style="margin-top: 8px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Donation Form -->
+                <div>
+                    <h3 style="margin-bottom: 25px;">Complete Your Donation</h3>
+                    
+                    <form id="donationForm">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Donation Type</label>
+                            <select required>
+                                <option value="">Select type</option>
+                                <option value="one-time">One-time Donation</option>
+                                <option value="monthly">Monthly Recurring</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center; padding: 16px;">
+                            Donate Now
+                        </button>
+                        
+                        <p style="font-size: 0.85rem; color: #666; margin-top: 15px; text-align: center;">
+                            Secure payment powered by trusted partners
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container" style="max-width: 700px; text-align: center;">
+            <h2 style="margin-bottom: 20px;">Get In Touch</h2>
+            <p style="font-size: 1.15rem; margin-bottom: 40px;">We would love to hear from you. Reach out to learn more about our work or how you can get involved.</p>
+            
+            <div style="background: #f8f9ff; padding: 40px; border-radius: 16px;">
+                <p><strong>Email:</strong> info@clearhopecarefoundation.org</p>
+                <p><strong>Phone:</strong> 08162356968</p>
+                <p style="margin-top: 20px;"><strong>Location:</strong> Community Development Initiative, Nigeria</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">Clear Hope Care Foundation</div>
+                    <p style="max-width: 300px;">Empowering women. Strengthening communities. Building sustainable futures.</p>
+                </div>
+                
+                <div>
+                    <h4 style="color: white; margin-bottom: 15px;">Quick Links</h4>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="#about" style="color: #ccc; text-decoration: none;">About Us</a>
+                        <a href="#programs" style="color: #ccc; text-decoration: none;">Our Programs</a>
+                        <a href="#impact" style="color: #ccc; text-decoration: none;">Our Impact</a>
+                        <a href="#donate" style="color: #ccc; text-decoration: none;">Donate</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="color: white; margin-bottom: 15px;">Connect With Us</h4>
+                    <p style="margin-bottom: 10px;">info@clearhopecarefoundation.org</p>
+                    <p>08162356968</p>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid #444; margin-top: 50px; padding-top: 25px; text-align: center; font-size: 0.9rem;">
+                © 2026 Clear Hope Care Foundation. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Donation amount selection
+        function selectAmount(element, amount) {
+            // Deselect all options
+            document.querySelectorAll('.donation-option').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Select clicked option
+            element.classList.add('selected');
+        }
+    </script>
+</body>
+</html>
